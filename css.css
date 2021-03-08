@@ -1,0 +1,113 @@
+html,body{
+	height:100%;
+	width:100%;
+	margin:0px;
+	padding:0px;
+}
+@font-face{
+	font-family:"fira code";
+	src: url("fira code.ttf");
+}
+@font-face{
+	font-family:"b yekan";
+	src: url("b yekan.ttf");
+}
+.background{
+	height:100%;
+	position:fixed;
+}
+.all_pages_count,
+.readed_pages_count,
+.title,
+.all_pages_count,
+.readed_pages_count,
+.number_3,
+.form h1,
+.form button,
+.form input
+{
+	direction:rtl;
+	font-family:"b yekan";
+	padding:10px;
+	position:relative;
+	color:white;
+	background-color:black;
+	margin:8px;
+	font-size:40px;
+	border-radius:5px;
+	margin-right:auto;
+	margin-left:auto;
+}
+#container{
+	position:absolute;
+	top:10%;
+	left:50%;
+	transform:translateX(-50%);
+	direction:rtl;
+}
+.title{
+	background-color:blue;
+	font-size:70px;
+}
+.line{
+	width:100%;
+	border-bottom:4px solid darkblue;
+}
+.form h1{
+	margin-top:60px;
+}
+.form input{
+	border:1px solid darkblue;
+}
+.number_3,
+.form h1,
+.form input{
+	margin:20px;
+}
+.finished{
+	    position: absolute;
+    top: 10%;
+    right: 100px;
+    width: 50%;
+    background-color: blue;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    direction: rtl;
+    font-family: "b yekan";
+}
+/* action.php */
+.ok{
+	direction:rtl;
+	font-family:"b yekan";
+	padding:10px;
+	position:absolute;
+	right:100px;
+	width:60%;
+	color:white;
+	background-color:blue;
+	display:block;
+	font-size:40px;
+	border-radius:5px;
+	top:5%;
+}
+.container_2{
+	position:absolute;
+	height:80%;
+	right:100px;
+	top:25%;
+	
+}
+.container_2 h1{
+	color:white;
+	background-color:blue;
+	
+	direction:rtl;
+	
+}
+.page{
+	font-size:45px;
+	padding:10px;
+	border-radius:10px;
+}
+
