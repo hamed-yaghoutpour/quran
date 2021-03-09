@@ -1,0 +1,92 @@
+html,body{
+	height:100%;
+	width:100%;
+	margin:0px;
+	padding:0px;
+}
+@font-face{
+	font-family:"b yekan";
+	src: url("b yekan.ttf");
+}
+.background{
+	height:100%;
+	width:100%;
+	position:fixed;
+	background-color:darkblue;
+	/* todo:fix color */
+}
+#container{
+	width:80%;
+	min-height:40%;
+	position:absolute;
+	top:10%;
+	left:50%;
+	transform:translate(-50%);
+}
+#container div{
+	width:100%;
+	margin-bottom:50px;
+	border-radius:10px;
+	background-color:aqua;
+}
+#container div:last-child{
+	margin-bottom:0px;
+}
+#container .mainTitle h1{
+	direction:rtl;
+	color:blue;
+}
+#container .newRecord .title{
+	color:blue;
+	position:absolute;
+	right:50px;
+	top:100px;
+}
+#container .newRecord .info{
+	color:gray;
+	position:absolute;
+	right:50px;
+	top:100px;
+}
+#container .newRecord input{
+	position:absolute;
+	right:50px;
+	top:100px;
+	
+}
+#container .newRecord .submitButton{
+	position:absolute;
+	right:50px;
+	top:100px;
+}
+#container .allRecords .title{
+	color:blue;
+	position:absolute;
+	right:50px;
+	top:100px;
+}
+#container .allRecords .item:first-child{
+	margin-top:100px;
+}
+#container .allRecords .item{
+	background-color:blue;
+	margin:10px;
+	border-radius:10px;
+	position:relative;
+	height:50px;
+
+}
+#container .allRecords .item svg{
+	fill:white;
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	right:100px;
+}
+#container .allRecords .item h1{
+	color:white;
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	right:200px;
+}
