@@ -28,6 +28,7 @@ html,body{
 	margin-bottom:50px;
 	border-radius:10px;
 	background-color:aqua;
+	position: relative;
 }
 #container div:last-child{
 	margin-bottom:0px;
@@ -35,29 +36,51 @@ html,body{
 #container .mainTitle h1{
 	direction:rtl;
 	color:blue;
+	font-size:100px;
+	margin:10px;
+}
+#container .newRecord{
+	height:400px;
 }
 #container .newRecord .title{
 	color:blue;
 	position:absolute;
 	right:50px;
-	top:100px;
+	top:10px;
+	font-size: 70px;
+	direction: rtl;
 }
 #container .newRecord .info{
 	color:gray;
 	position:absolute;
 	right:50px;
-	top:100px;
+	direction: rtl;
+	top:120px;
+	max-width: 85%;
+	font-size: 40px;
+
 }
 #container .newRecord input{
 	position:absolute;
 	right:50px;
-	top:100px;
-	
+	top:280px;
+	width:350px;
+	height:60px;
+	border-radius:10px;
+	border:1px solid darkblue;
+	direction: rtl;
+	font-size: 40px;
 }
 #container .newRecord .submitButton{
 	position:absolute;
-	right:50px;
-	top:100px;
+	right:450px;
+	top:280px;
+	height:60px;
+	font-size:30px;
+	background-color:blue;
+	color:white;
+	border-radius:10px;
+	padding:10px;
 }
 #container .allRecords .title{
 	color:blue;
@@ -74,7 +97,18 @@ html,body{
 	border-radius:10px;
 	position:relative;
 	height:50px;
-
+	width:auto;
+	border:1px solid blue;
+}
+#container .allRecords .item h1{
+	color:white;
+	position:absolute;
+	top:50%;
+	transform:translateY(-50%);
+	font-size:35px;
+	right:20px;
+	padding:0px;
+	margin:0px;
 }
 #container .allRecords .item svg{
 	fill:white;
