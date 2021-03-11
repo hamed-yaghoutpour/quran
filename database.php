@@ -2,27 +2,33 @@
 	
 	class db{
 		public $connection;
-		public function connect($mode = "public"){
+		public $servername;
+		public $username;
+		public $password;
+		public $db_name;
+		public function __construct($mode = "public"){
 			if($mode == "private"){
-				$servername = "localhost";
-				$username = "root";
-				$password = "";
-				$db_name = "quran";
+				$this->servername = "localhost";
+				$this->username = "root";
+				$this->password = "";
+				$this->db_name = "quran";
+			}elseif($mode == "public"){
+				$this->servername = "localhost";
+				$this->username = "aneserin_root";
+				$this->password = "hamed1382h";
+				$this->db_name = "aneserin_quran";
 			};
-			
-			if($mode == "public"){
-				$servername = "localhost";
-				$username = "aneserin_root";
-				$password = "hamed1382h";
-				$db_name = "aneserin_quran";
-			};
-			
-			$this->connection = mysqli_connect($servername,$username,$password,$db_name);
-			mysqli_set_charset($this->connection,"utf8");
+			$this->preConfigure();
 		}
 		public function preConfigure(){
+			$this->connection = mysqli_connect($this->servername,$this->username,$this->password,$this->db_name);
+			mysqli_set_charset($this->connection,"utf8");
+
 			$sql = "create database if not exists quran";
 			mysqli_query($this->connection,$sql);
+			mysqli_set_charset($this->connection,"utf8");
+
+			$this->connection = mysqli_connect($this->servername,$this->username,$this->password,$this->db_name);
 			$sql = "create table if not exists records(
 				id  int(4) primary key auto_increment,
 				full_name varchar(50) not null
@@ -64,9 +70,7 @@
 
 
 	// answer to get requests:
-	$db = new db;
-	$db->connect("private");
-	$db->preConfigure();
+	$db = new db("private");
 
 	if($_GET["action"]=="newRecord"){
 		$full_name = $_GET["full_name"];
