@@ -45,7 +45,7 @@ function showNewItem(full_name) {
     returnValue.appendChild(svgIcon)
 
     let child2 = document.createElement("h1")
-    child2.innerHTML = "hamed"
+    child2.innerHTML = full_name
     returnValue.appendChild(child2)
     return returnValue
 }
@@ -54,10 +54,11 @@ function updateRecords(){
     $(".allRecords").empty();
     getAllRecordsAsJson().forEach(full_name => {
         $(".allRecords").append(showNewItem(full_name))
-    })
-    $("#container .readedPagesCounter span").innerHTML = getAllRecordsAsJson().length
+    });
+    $(".readedPagesCounter span").html(getAllRecordsAsJson().length)
+    console.log(getAllRecordsAsJson().length + "is ")
 }
-//updateRecords();
+updateRecords();
 
 $(".submitButton").click(function(){
     let confirm = window.confirm("صحت اطلاعات ورودی را تایید می کنید؟")

@@ -19,7 +19,7 @@ html,body{
 	width:80%;
 	min-height:40%;
 	position:absolute;
-	top:10%;
+	top:6%;
 	left:50%;
 	transform:translate(-50%);
 }
@@ -71,6 +71,8 @@ html,body{
 }
 #container .newRecord .info span{
 	font-size: 30px;
+	text-align: right;
+	direction: rtl;
 }
 #container .newRecord b{
 	text-align:center;
@@ -112,9 +114,6 @@ html,body{
 	position:absolute;
 	right:50px;
 	top:100px;
-}
-#container .allRecords .item:first-child{
-	margin-top:100px;
 }
 #container .allRecords .item{
 	background-color:blue;
