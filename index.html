@@ -7,6 +7,7 @@
 	<title>quran</title>	
 	<script src="jquery-3.5.1.js"></script>
 	<script src="js.js"></script>
+	
 </head>
 <body>
 	<div class="background"></div>
@@ -28,10 +29,14 @@
 			<input>
 			<button class="submitButton"><b>دریافت سهم</b></button>
 		</div>
-		<div class="allRecords">
-			<h1 class="title"></h1>
-			
+		<div id="Vue_container">
+			<div class="allRecords">
+				<h1 class="title"></h1>
+				<item v-for="object in people_object" v-bind:full_name="object.name"></item>
+			</div>
 		</div>
+		<script src="vue.js"></script>
+		<script src="vueComponents.js"></script>
 	</div>
 </body>
 </html>

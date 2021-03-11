@@ -57,7 +57,7 @@ function updateRecords(){
     });
     $(".readedPagesCounter span").html(getAllRecordsAsJson().length * 5)
 }
-updateRecords();
+//updateRecords();
 
 $(".submitButton").click(function(){
     let confirm = window.confirm("صحت اطلاعات ورودی را تایید می کنید؟")
