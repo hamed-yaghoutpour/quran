@@ -60,7 +60,7 @@
 
 	// answer to get requests:
 	$db = new db;
-	$db->connect("private");
+	$db->connect();
 	$db->preConfigure();
 
 	if($_GET["action"]=="newRecord"){

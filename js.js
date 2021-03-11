@@ -11,6 +11,7 @@ $(document).ready(function(){
             )
         })
     }
+    updateRecords();
     $(".submitButton").click(function(){
         var x = newRecord($("input").val())
         alert(`
