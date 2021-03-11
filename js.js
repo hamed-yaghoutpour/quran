@@ -55,8 +55,7 @@ function updateRecords(){
     getAllRecordsAsJson().forEach(full_name => {
         $(".allRecords").append(showNewItem(full_name))
     });
-    $(".readedPagesCounter span").html(getAllRecordsAsJson().length)
-    console.log(getAllRecordsAsJson().length + "is ")
+    $(".readedPagesCounter span").html(getAllRecordsAsJson().length * 5)
 }
 updateRecords();
 
