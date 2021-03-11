@@ -60,6 +60,11 @@ html,body{
 	font-size: 40px;
 
 }
+#container .newRecord .info span{
+	font-size: 30px;
+
+}
+
 #container .newRecord input{
 	position:absolute;
 	right:50px;

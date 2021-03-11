@@ -40,7 +40,12 @@
 				select * from records
 			";
 			$results = mysqli_query($this->connection,$sql);
-			return mysqli_num_rows($results)*5;
+			if((mysqli_num_rows($results)*5)>605){
+				return "limitReached";
+			}else{
+				return mysqli_num_rows($results)*5;
+			}
+			
 		}
 		public function getAllRecordsAsJson(){
 			$sql = "

@@ -1,7 +1,7 @@
 //this file uses jquery so you have to uput it after that in a html file :
 
     function newRecord(full_name){
-        var readedPagesCount;
+        var returnValue;
         $.ajax({
             url:"database.php",
             method:"GET",
@@ -11,15 +11,17 @@
                 full_name:full_name
             },
             success:function(data){
-                readedPagesCount = Number(data);
+                if(data == "limitReached"){
+                    returnValue = "limitReached"
+                }else{
+                    returnValue = Number(data);
+                }
                 
-            },
-            fail:function(error){
-                console.log(error)
+                
             }
 
         });
-        return readedPagesCount;
+        return returnValue;
     }
     function getAllRecordsAsJson(){ // return an array
         
