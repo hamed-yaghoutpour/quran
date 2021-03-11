@@ -33,59 +33,79 @@ html,body{
 #container div:last-child{
 	margin-bottom:0px;
 }
+#container .mainTitle{
+	border:1px solid darkblue;
+}
 #container .mainTitle h1{
 	direction:rtl;
 	color:blue;
 	font-size:100px;
-	margin:10px;
+	margin:20px;
+	padding:0px;
+	right:10px;
+	position:relative;
+	line-height:110px;
 }
 #container .newRecord{
-	height:400px;
+	display:flex;
+	align-items:center;
+	flex-direction:column;
+	padding-bottom:50px
 }
 #container .newRecord .title{
 	color:blue;
-	position:absolute;
-	right:50px;
-	top:10px;
+	top:50px;
 	font-size: 70px;
 	direction: rtl;
+	position:relative;
+	margin-top:0px;
+	margin-bottom:35px;
 }
 #container .newRecord .info{
 	color:gray;
-	position:absolute;
-	right:50px;
 	direction: rtl;
-	top:120px;
-	max-width: 85%;
 	font-size: 40px;
-
+    position:relative;
+    max-width:60%;
+    text-align:center;
 }
 #container .newRecord .info span{
 	font-size: 30px;
+}
+#container .newRecord b{
+	text-align:center;
+	font-size:40px;
+	color:blue;
+	direction:rtl;
+	margin-bottom:5px;
+}
+#container .newRecord .submitButton b{
+	color:white;
+	font-size:30px;
 
 }
-
 #container .newRecord input{
-	position:absolute;
-	right:50px;
-	top:280px;
-	width:350px;
+	position:relative;
+	width:60%;
 	height:60px;
 	border-radius:10px;
 	border:1px solid darkblue;
 	direction: rtl;
 	font-size: 40px;
+	margin-bottom:15px;
 }
 #container .newRecord .submitButton{
-	position:absolute;
-	right:450px;
-	top:280px;
+	position:relative;
 	height:60px;
 	font-size:30px;
 	background-color:blue;
 	color:white;
 	border-radius:10px;
 	padding:10px;
+	width:60%;
+}
+#container .allRecords{
+	border:1px solid darkblue;
 }
 #container .allRecords .title{
 	color:blue;
@@ -111,21 +131,28 @@ html,body{
 	top:50%;
 	transform:translateY(-50%);
 	font-size:35px;
-	right:20px;
+	right:95px;
 	padding:0px;
 	margin:0px;
 }
-#container .allRecords .item svg{
-	fill:white;
-	position:absolute;
-	top:50%;
-	transform:translateY(-50%);
-	right:100px;
+#container .allRecords .item img{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 35px;
+	right: 30px;
 }
-#container .allRecords .item h1{
+#container .readedPagesCounter{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	color:blue;
+	font-size:30px;
+}
+#container .readedPagesCounter span{
+	background-color:blue;
+	padding:10px;
+	border-radius:8px;
 	color:white;
-	position:absolute;
-	top:50%;
-	transform:translateY(-50%);
-	right:200px;
+
 }
