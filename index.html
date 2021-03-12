@@ -6,8 +6,7 @@
 	<link rel="stylesheet" href="styles.css">
 	<title>quran</title>	
 	<script src="jquery-3.5.1.js"></script>
-	<script src="js.js"></script>
-	
+	<script src="vue.js"></script>
 </head>
 <body>
 	<div class="background"></div>
@@ -32,11 +31,12 @@
 		<div id="Vue_container">
 			<div class="allRecords">
 				<h1 class="title"></h1>
-				<item v-for="object in people_object" v-bind:full_name="object.name"></item>
+				<item v-for="object in people_object" v-bind:full_name="object.name" v-bind:person_number="object.person_number"></item>
 			</div>
 		</div>
-		<script src="vue.js"></script>
+		
 		<script src="vueComponents.js"></script>
+		<script src="js.js"></script>
 	</div>
 </body>
 </html>

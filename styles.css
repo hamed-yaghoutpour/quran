@@ -141,6 +141,17 @@ html,body{
 	height: 35px;
 	right: 30px;
 }
+#container .allRecords .item .showPersonPages{
+	background-color: white;
+    color: darkblue;
+    position: absolute;
+    left: 30px;
+    font-size: 19px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 5px;
+    border: 1px solid aqua;
+}
 #container .readedPagesCounter{
 	display:flex;
 	justify-content:center;

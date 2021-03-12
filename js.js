@@ -9,6 +9,7 @@ function newRecord(full_name){
             full_name:full_name
         },
         success:function(data){
+            console.log(data +"is new record ajax resived data ")
             if(data == "limitReached"){
                 returnValue = "limitReached"
             }else{
@@ -31,33 +32,20 @@ function getAllRecordsAsJson(){ // return an array
             action:"getAllRecordsAsJson"
         },
         success:function(data){
+            console.log(data +"is new get all records as json ajax resived data ")
             returnValue = JSON.parse(data)
         }
 
     })
     return returnValue
 }
-function showNewItem(full_name) {
-    let returnValue = document.createElement("div")
-    returnValue.className = "item"
-    let svgIcon = document.createElement("img")
-    svgIcon.src="person.svg"
-    returnValue.appendChild(svgIcon)
 
-    let child2 = document.createElement("h1")
-    child2.innerHTML = full_name
-    returnValue.appendChild(child2)
-    return returnValue
-}
 $(document).ready(function(){
 function updateRecords(){
-    $(".allRecords").empty();
-    getAllRecordsAsJson().forEach(full_name => {
-        $(".allRecords").append(showNewItem(full_name))
-    });
+    app.people_object = getAllRecordsAsJson()
     $(".readedPagesCounter span").html(getAllRecordsAsJson().length * 5)
 }
-//updateRecords();
+updateRecords();
 
 $(".submitButton").click(function(){
     let confirm = window.confirm("صحت اطلاعات ورودی را تایید می کنید؟")

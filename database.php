@@ -11,7 +11,7 @@
 				$this->servername = "localhost";
 				$this->username = "root";
 				$this->password = "";
-				$this->db_name = "quran";
+				$this->db_name = "records";
 			}elseif($mode == "public"){
 				$this->servername = "localhost";
 				$this->username = "aneserin_root";
@@ -21,10 +21,10 @@
 			$this->preConfigure();
 		}
 		public function preConfigure(){
-			$this->connection = mysqli_connect($this->servername,$this->username,$this->password,$this->db_name);
+			$this->connection = mysqli_connect($this->servername,$this->username,$this->password);
 			mysqli_set_charset($this->connection,"utf8");
 
-			$sql = "create database if not exists quran";
+			$sql = "create database if not exists records";
 			mysqli_query($this->connection,$sql);
 			mysqli_set_charset($this->connection,"utf8");
 
@@ -59,8 +59,13 @@
 			";
 			$results = mysqli_query($this->connection,$sql);
 			$returnValue = [];
+			$counter = 1;
 			while($row = mysqli_fetch_assoc($results)){
-				$returnValue[] = $row["full_name"];
+				$returnValue[] = [
+					"full_name"=>$row["full_name"],
+					"person_number" => $counter
+				];
+				$counter++;
 			};
 			return json_encode($returnValue);
 		}
