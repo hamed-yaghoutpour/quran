@@ -40,18 +40,11 @@
 				insert into records (full_name) values ('$full_name');
 			";
 			mysqli_query($this->connection,$sql);
-
-			//return readed pages count:
 			$sql = "
 				select * from records
 			";
 			$results = mysqli_query($this->connection,$sql);
-			if((mysqli_num_rows($results)*5)>605){
-				return "limitReached";
-			}else{
-				return mysqli_num_rows($results)*5;
-			}
-			
+			return mysqli_num_rows($results)*5;
 		}
 		public function getAllRecordsAsJson(){
 			$sql = "
@@ -76,11 +69,8 @@
 
 	// answer to get requests:
 	$db = new db("private");
-
 	if($_GET["action"]=="newRecord"){
 		$full_name = $_GET["full_name"];
-		
-		
 		echo $db->newRecord($full_name);
 	};
 	

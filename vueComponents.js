@@ -3,7 +3,7 @@ Vue.component('item',{
     template:`
         <div class="item">
             <img src="person.svg">
-            <h1>{{this.full_name}}</h1>
+            <h1>{{full_name}}</h1>
             <button class="showPersonPages" v-on:click="showPersonPages">مشاهده سهم</button>
         </div>
     `,
@@ -29,5 +29,7 @@ const app = new Vue({
     el:"#Vue_container",
     data:{
         people_object: []
+        //objects must be like this :
+        //{full_name:"hamed",person_number:22}
     }
 });

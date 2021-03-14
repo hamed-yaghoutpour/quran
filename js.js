@@ -1,26 +1,24 @@
 function newRecord(full_name){
-    var returnValue;
-    $.ajax({
-        url:"database.php",
-        method:"GET",
-        async:false,
-        data:{
-            action:"newRecord",
-            full_name:full_name
-        },
-        success:function(data){
-            console.log(data +"is new record ajax resived data ")
-            if(data == "limitReached"){
-                returnValue = "limitReached"
-            }else{
+    if((getAllRecordsAsJson().length * 5) >= 605){
+        return "limitReached"
+    }else{
+        var returnValue;
+        $.ajax({
+            url:"database.php",
+            method:"GET",
+            async:false,
+            data:{
+                action:"newRecord",
+                full_name:full_name
+            },
+            success:function(data){
+                console.log(data)
                 returnValue = Number(data);
             }
-            
-            
-        }
 
-    });
-    return returnValue;
+         });
+        return returnValue;
+    }
 }
 function getAllRecordsAsJson(){ // return an array
     var returnValue = false;
@@ -32,20 +30,24 @@ function getAllRecordsAsJson(){ // return an array
             action:"getAllRecordsAsJson"
         },
         success:function(data){
-            console.log(data +"is new get all records as json ajax resived data ")
+            console.log(data)
             returnValue = JSON.parse(data)
         }
 
     })
     return returnValue
 }
-
-$(document).ready(function(){
 function updateRecords(){
+    //pass recived data to vue:
     app.people_object = getAllRecordsAsJson()
     $(".readedPagesCounter span").html(getAllRecordsAsJson().length * 5)
 }
+$(document).ready(function(){
+
 updateRecords();
+/* for(var i = 0;i<300;i++){
+    console.log(newRecord("hamed"))
+} */
 
 $(".submitButton").click(function(){
     let confirm = window.confirm("صحت اطلاعات ورودی را تایید می کنید؟")

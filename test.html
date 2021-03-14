@@ -1,0 +1,14 @@
+<script src="jquery-3.5.1.js"></script>
+<script>
+    $(document).ready(function(){
+        $.ajax({
+            url:"database.php",
+            data:{
+                action:"getAllRecordsAsJson"
+            },
+            success:function(data){
+                alert(JSON.parse(data))
+            }
+        })
+    })
+</script>
