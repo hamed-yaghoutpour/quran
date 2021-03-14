@@ -28,6 +28,7 @@
 			mysqli_set_charset($this->connection,"utf8");
 
 			$this->connection = mysqli_connect($this->servername,$this->username,$this->password,$this->db_name);
+			mysqli_set_charset($this->connection,"utf8");
 			$sql = "create table if not exists records(
 				id  int(4) primary key auto_increment,
 				full_name varchar(50) not null
