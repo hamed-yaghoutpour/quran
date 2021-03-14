@@ -1,5 +1,4 @@
 <?php
-	
 	class db{
 		public $connection;
 		public $servername;
@@ -23,8 +22,8 @@
 		public function preConfigure(){
 			$this->connection = mysqli_connect($this->servername,$this->username,$this->password);
 			mysqli_set_charset($this->connection,"utf8");
-
-			$sql = "create database if not exists records";
+			$database_name = $this->db_name;
+			$sql = "create database if not exists $database_name";
 			mysqli_query($this->connection,$sql);
 			mysqli_set_charset($this->connection,"utf8");
 

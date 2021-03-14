@@ -44,33 +44,38 @@ function updateRecords(){
 }
 $(document).ready(function(){
 
-updateRecords();
-/* for(var i = 0;i<300;i++){
-    console.log(newRecord("hamed"))
-} */
-
-$(".submitButton").click(function(){
-    let confirm = window.confirm("صحت اطلاعات ورودی را تایید می کنید؟")
-    if(! confirm){
-        return false;
-    };
-    var x = newRecord($("input").val())
-    if(x== "limitReached"){
-        alert(`
-            با عرض پوزش تمام صفحات این دوره از ختم قرآن تقسیم شده است، التماس دعا
-        `)
-    }else{
-        alert(`
-        سهم شما صفحه های:
-        ${x-4}
-        ${x-3}
-        ${x-2}
-        ${x-1}
-        ${x}
-
-        `)
-    }
     updateRecords();
-})
+    /* for(var i = 0;i<300;i++){
+        console.log(newRecord("hamed"))
+    } */
+
+    $(".submitButton").click(function(){
+        let confirm = window.confirm("صحت اطلاعات ورودی را تایید می کنید؟")
+        if(! confirm){
+            return false;
+        };
+        var x = newRecord($("input").val())
+        if(x== "limitReached"){
+            alert(`
+                با عرض پوزش تمام صفحات این دوره از ختم قرآن تقسیم شده است، التماس دعا
+            `)
+        }else{
+            alert(`
+            سهم شما صفحه های:
+            ${x-4}
+            ${x-3}
+            ${x-2}
+            ${x-1}
+            ${x}
+
+            `)
+        }
+        updateRecords();
+    })
+    $("input").keydown(function(e){
+        if(e.keyCode == 13){
+            $(".submitButton").trigger('click')
+        }
+    })
 
 })
