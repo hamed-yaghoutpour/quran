@@ -21,7 +21,7 @@ function newRecord(full_name){
     }
 }
 function getAllRecordsAsJson(){ // return an array
-    var returnValue = false;
+    let returnValue;
     $.ajax({
         url:"database.php",
         method:"GET",
