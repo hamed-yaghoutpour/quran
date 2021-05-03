@@ -2,7 +2,7 @@ Vue.component('item',{
     props:["full_name","person_number"],
     template:`
         <div class="item">
-            <img src="person.svg">
+            <img src="./garage/person.svg">
             <h1>{{full_name}}</h1>
             <button class="showPersonPages" v-on:click="showPersonPages">مشاهده سهم</button>
         </div>

@@ -4,7 +4,7 @@ function newRecord(full_name){
     }else{
         var returnValue;
         $.ajax({
-            url:"database.php",
+            url:"./back-end/database.php",
             method:"GET",
             async:false,
             data:{
@@ -23,7 +23,7 @@ function newRecord(full_name){
 function getAllRecordsAsJson(){ // return an array
     let returnValue;
     $.ajax({
-        url:"database.php",
+        url:"./back-end/database.php",
         method:"GET",
         async:false,
         data:{
