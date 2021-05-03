@@ -23,7 +23,7 @@
 			$this->connection = mysqli_connect($this->servername,$this->username,$this->password);
 			mysqli_set_charset($this->connection,"utf8");
 			$database_name = $this->db_name;
-			$sql = "create database if not exists $database_name";
+			$sql = "create database if not exists $database_name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci";
 			mysqli_query($this->connection,$sql);
 			mysqli_set_charset($this->connection,"utf8");
 
