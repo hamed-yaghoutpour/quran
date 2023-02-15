@@ -1,45 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<script src="./garage/jquery-3.5.1.js"></script>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="./front-end/styles.css">
-	<title>quran</title>	
-	<!-- <script src="vue.js"></script> -->
-	<script src="./garage/vue.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quran</title>
 </head>
 <body>
-	<div class="background"></div>
-	<div id="container">
-		<div class="mainTitle">
-			<h1>
-				ختم قرآن هوشمند دبیرستان فرهنگ فاطمیه - منطقه 11
-			</h1>
-		</div>
-		<div class="readedPagesCounter">
-            <h1>تعداد صفحه های تقبل شده : 
-                <span></span>
-            </h1>
-		</div>
-		<div class="newRecord">
-			<h1 class="title">مشارکت در این طرح:</h1>
-			<p class="info">در صورت تمایل به شرکت در این طرح نام خود را وارد کنید <br><span>** اسامی برای عموم قابل مشاهده است</span></p>
-			<b>نام شرکت کننده :</b>
-			<input>
-			<button class="submitButton"><b>دریافت سهم</b></button>
-		</div>
-		<div id="Vue_container">
-			<div class="allRecords">
-				<h1 class="title"></h1>
-				<item v-for="object in people_object" v-bind:full_name="object.full_name" v-bind:person_number="object.person_number"></item>
-			</div>
-		</div>
-		
-		<script src="./front-end/vueComponents.js"></script>
-		<script src="./front-end/js.js"></script>
-	</div>
+    <div id="root"></div>
+    <script src="/main.jsx" type="module"></script>
 </body>
 </html>
-
-
-
