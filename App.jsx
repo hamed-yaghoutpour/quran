@@ -4,6 +4,7 @@ import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlin
 import { CheckBox, Person2Rounded } from "@mui/icons-material";
 import "./tailwind_output.css";
 import image1 from "./1.jpg";
+import "./styles.css";
 //
 export default function App() {
 	if (window.localStorage.getItem("records") === null) {
@@ -105,9 +106,9 @@ export default function App() {
 				</div>
 				<button
 					onClick={new_record}
-					className="border border-blue-500 rounded px-2 mt-2 bg-green-500 text-white hover:bg-green-600 duration-300"
+					className=" px-2 mt-2 bg-green-500 text-white hover:bg-green-600 duration-300 pushable"
 				>
-					اعلام ۵ صفحه شما
+					<span className="front"> اعلام ۵ صفحه شما</span>
 				</button>
 				<h1>عزیزان حاضر در ختم قرآن:‌ {records.length} نفر</h1>
 				<h1>صفحات انتخاب شده تاکنون :‌ {records.length * 5} صفحه </h1>
