@@ -1,0 +1,6 @@
+GET http://localhost:4000/records
+###
+post http://localhost:4000/records
+Content-Type: application/json
+
+{"name" : "hamedpro","privacy_mode" : true }

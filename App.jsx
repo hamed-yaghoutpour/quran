@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { Checkbox } from "@mui/material";
 import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
+import { CheckBox } from "@mui/icons-material";
 export default function App() {
 	var [records, set_records] = useState();
-	var [is_checkbox_active, set_is_checkbox_active] = useEffect(false);
+	var [is_checkbox_active, set_is_checkbox_active] = useState(false);
 	async function new_record() {}
 	async function fetch_records() {
 		return (
@@ -19,7 +19,7 @@ export default function App() {
 		set_records(await fetch_records());
 	}
 	async function new_record() {
-		var { inserted_id } = (
+		var insertedId = (
 			await axios({
 				baseURL: "http://localhost:4000",
 				url: "records",
@@ -30,14 +30,13 @@ export default function App() {
 					time: new Date().getTime(),
 				},
 			})
-		)
-			.data(await fetch_records())
-			.sort((i1, i2) => i2.time - i1.time)
-			.forEach((record, index) => {
-				if (record._id === inserted_id) {
-					alert(`you must read these pages ${index * +1} - ${index * 5 + 5}`);
-				}
-			});
+		).data;
+		var tmp = await fetch_records();
+		tmp.sort((i1, i2) => i1.time - i2.time).forEach((record, index) => {
+			if (record._id === insertedId) {
+				alert(`you must read these pages ${index * 5 + 1} - ${index * 5 + 5}`);
+			}
+		});
 		get_data();
 	}
 
@@ -51,17 +50,17 @@ export default function App() {
 			<h1>your name : </h1>
 			<input id="name_input" />
 			<div onClick={() => set_is_checkbox_active((prev) => !prev)}>
-				{is_checkbox_active ? <Checkbox /> : <CheckBoxOutlineBlankOutlinedIcon />}
+				{is_checkbox_active ? <CheckBox /> : <CheckBoxOutlineBlankOutlinedIcon />}
 				keep my name hidden from others
 			</div>
 			<button onClick={new_record}>get 5 pages</button>
 
 			<h1>current records</h1>
 			{records
-				.sort((i1, i2) => i2.time - i1.time)
+				.sort((i1, i2) => i1.time - i2.time)
 				.map((record, index, array) => {
 					return (
-						<div className="bg-blue-600">
+						<div className="bg-blue-600" key={record._id}>
 							{record.privacy_mode ? "unknown" : record.name}
 							{`pages : ${index * 5 + 1} - ${index * 5 + 5}`}
 						</div>

@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import fs from "fs";
-
+import { MongoClient } from "mongodb";
 var env_vars = JSON.parse(fs.readFileSync("./env.json", "utf8"));
 var app = express();
 app.use(cors());
@@ -14,6 +14,9 @@ app.get("/records", async (request, response) => {
 });
 
 app.post("/records", async (request, response) => {
-	await db.collection("records").insertOne(request.body);
-	response.json("ok");
+	var { insertedId } = await db.collection("records").insertOne(request.body);
+
+	response.json(insertedId);
 });
+
+app.listen(4000, () => console.log("server started on port 4000"));
