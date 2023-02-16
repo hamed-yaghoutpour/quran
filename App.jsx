@@ -12,7 +12,7 @@ export default function App() {
 	async function fetch_records() {
 		return (
 			await axios({
-				baseURL: "http://localhost:4000",
+				baseURL: "http://localhost:4118",
 				url: "records",
 				method: "get",
 			})
@@ -24,7 +24,7 @@ export default function App() {
 	async function new_record() {
 		var insertedId = (
 			await axios({
-				baseURL: "http://localhost:4000",
+				baseURL: "http://localhost:4118",
 				url: "records",
 				method: "post",
 				data: {
