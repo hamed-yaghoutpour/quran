@@ -12,7 +12,7 @@ export default function App() {
 	async function fetch_records() {
 		return (
 			await axios({
-				baseURL: "http://localhost:4118",
+				baseURL: vite_api_endpoint /* vite will replace it during build  */,
 				url: "records",
 				method: "get",
 			})
@@ -24,7 +24,7 @@ export default function App() {
 	async function new_record() {
 		var insertedId = (
 			await axios({
-				baseURL: "http://localhost:4118",
+				baseURL: vite_api_endpoint /* vite will replace it during build  */,
 				url: "records",
 				method: "post",
 				data: {

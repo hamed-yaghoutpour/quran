@@ -7,7 +7,7 @@ var app = express();
 app.use(cors());
 app.use(express.json());
 var client = new MongoClient(env_vars.mongodb_url);
-var db = client.db("quran");
+var db = client.db(env_vars.mongodb_db_name);
 
 app.get("/records", async (request, response) => {
 	response.json(await db.collection("records").find().toArray());
@@ -19,4 +19,4 @@ app.post("/records", async (request, response) => {
 	response.json(insertedId);
 });
 
-app.listen(4118, () => console.log("server started on port 4118"));
+app.listen(env_vars.api_port, () => console.log(`server started on port ${env_vars.api_port}`));
