@@ -555,12 +555,12 @@ video {
   height: 33.333333%;
 }
 
-.h-8 {
-  height: 2rem;
-}
-
 .w-full {
   width: 100%;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
 }
 
 .items-center {

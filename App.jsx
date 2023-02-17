@@ -123,7 +123,7 @@ export default function App() {
 					.map((record, index, array) => {
 						return (
 							<div
-								className="bg-green-600 text-white rounded mb-1 px-1 h-8 flex items-center mx-1 justify-between"
+								className="bg-green-600 text-white rounded mb-1 px-1 flex items-center mx-1 justify-between"
 								key={record._id}
 							>
 								<div>
@@ -138,6 +138,7 @@ export default function App() {
 									onClick={() =>
 										change_record_is_read(record._id, !record.is_read)
 									}
+									className="shrink-0"
 								>
 									<span>قرائت شد</span>{" "}
 									{record.is_read ? (
