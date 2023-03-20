@@ -3,9 +3,8 @@ import axios from "axios";
 import CheckBoxOutlineBlankOutlinedIcon from "@mui/icons-material/CheckBoxOutlineBlankOutlined";
 import { CheckBox, Person2Rounded } from "@mui/icons-material";
 import "./tailwind_output.css";
-import image1 from "./1.jpg";
+import image1 from "./image.jpg";
 import "./styles.css";
-//
 export default function App() {
 	if (window.localStorage.getItem("records") === null) {
 		window.localStorage.setItem("records", JSON.stringify([]));
@@ -18,7 +17,6 @@ export default function App() {
 			await axios({
 				baseURL: vite_api_endpoint /* vite will replace it during build  */,
 				url: "records",
-				method: "get",
 			})
 		).data;
 	}
@@ -27,7 +25,7 @@ export default function App() {
 	}
 	async function change_record_is_read(record_id, new_state) {
 		if (!JSON.parse(window.localStorage.getItem("records")).includes(record_id)) {
-			alert("این صفحات انتخاب شما نمی باشد");
+			alert("این بخش انتخاب شما نبوده است");
 			return;
 		}
 		//new_state must be a boolean
@@ -62,7 +60,9 @@ export default function App() {
 			})
 		).data;
 		if (tmp === "limit_reached") {
-			alert("متاسفانه این دوره از ختم به پایان رسیده است . ان شاء الله در دوره بعدی");
+			alert(
+				"متاسفانه این دوره از ختم به پایان رسیده است . ان شاء الله در دوره بعدی مشارکت بفرمایید"
+			);
 		} else {
 			var insertedId = tmp;
 
@@ -73,11 +73,7 @@ export default function App() {
 		var tmp = await fetch_records();
 		tmp.sort((i1, i2) => i1.time - i2.time).forEach((record, index) => {
 			if (record._id === insertedId) {
-				alert(
-					`لطفا صفحات  اعلام شده را قرائت فرمایید: ${index * 5 + 1} - ${
-						index * 5 + 5
-					} التماس دعا`
-				);
+				/* alert(`لطفا جز ${index + 1} را قرائت فرمایید. التماس دعا`); */
 			}
 		});
 		get_data();
@@ -89,15 +85,16 @@ export default function App() {
 	if (records === undefined) return <h1>loading ...</h1>;
 	return (
 		<div className="">
-			<div className="w-full h-1/3 top-0 left-0 landscape:hidden relative">
-				<img
-					src={image1}
-					className="w-full"
-					style={{ objectFit: "fill", height: "33vh" }}
-				/>
+			<div
+				className="w-full h-1/3 top-0 left-0 landscape:hidden flex justify-center items-center"
+				style={{
+					justifyContent: "center",
+				}}
+			>
+				<img src={image1} style={{ height: "33vh" }} />
 			</div>
 			<div style={{ direction: "rtl" }} className="p-2 relative ">
-				<h1 className="text-2xl">دوره ختم قرآن دبیرستان فرهنگ فاطمیه - منطقه ۱۱ تهران</h1>
+				<h1 className="text-2xl">دوره ختم قرآن دسته جمعی به نیت حاج شکر الله یاقوت پور</h1>
 				<p className="mt-2">لطفا نام و نام خانوادگی خود را وارد کنید :</p>
 				<input id="name_input" className="border px-1 my-2 border-blue-500 rounded " />
 				<div onClick={() => set_is_checkbox_active((prev) => !prev)}>
@@ -108,13 +105,12 @@ export default function App() {
 					onClick={new_record}
 					className=" px-2 mt-2 bg-green-500 text-white hover:bg-green-600 duration-300 pushable"
 				>
-					<span className="front"> اعلام ۵ صفحه شما</span>
+					<span className="front">اعلام جزء شما</span>
 				</button>
-				<h1>عزیزان حاضر در ختم قرآن:‌ {records.length} نفر</h1>
-				<h1>صفحات انتخاب شده تاکنون :‌ {records.length * 5} صفحه </h1>
-				<h1>صفحات باقی مانده : {605 - records.length * 5} صفحه </h1>
+				<h1>جزء های انتخاب شده تاکنون :‌ {records.length} صفحه </h1>
+				<h1>تعداد جزء باقی مانده باقی مانده : {30 - records.length} جزء </h1>
 				<div className="flex justify-between mt-2">
-					<h1 className="text-xl inline-block">صفحات انتخاب شده </h1>
+					<h1 className="text-xl inline-block">جزء های انتخاب شده</h1>
 					<span>(لطفا پس از قرائت ثبت فرمایید)</span>
 				</div>
 
@@ -128,8 +124,7 @@ export default function App() {
 							>
 								<div>
 									<Person2Rounded sx={{ color: "white" }} />
-									{index + 1} -- {`صفحات : ${index * 5 + 1} - ${index * 5 + 5}`}{" "}
-									--
+									{index + 1} -- {`جزء : ${index + 1} `} --
 									<span className="pr-2">
 										{record.privacy_mode ? "ناشناس " : record.name}
 									</span>

@@ -16,7 +16,7 @@ app.get("/records", async (request, response) => {
 app.post("/records", async (request, response) => {
 	//return value is either "limit_reached" or inserted row id (string)
 	var current_records = await db.collection("records").find().toArray();
-	if (current_records.length >= 605 / 5) {
+	if (current_records.length >= 30) {
 		response.json("limit_reached");
 		return;
 	}
