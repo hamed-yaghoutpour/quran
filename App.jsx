@@ -5,13 +5,24 @@ import { CheckBox, Person2Rounded } from "@mui/icons-material";
 import "./tailwind_output.css";
 import image1 from "./image.jpg";
 import "./styles.css";
+import ReactSelect from "react-select";
 export default function App() {
 	if (window.localStorage.getItem("records") === null) {
 		window.localStorage.setItem("records", JSON.stringify([]));
 	}
+	function calc_empty_parts() {
+		//returns an array of numbers according to current "records"
+		var result = [];
+		for (var i = 1; i < 31; i++) {
+			if (records.find((record) => record.part_number === i) === undefined) {
+				result.push(i);
+			}
+		}
+		return result;
+	}
 	var [records, set_records] = useState();
+	var [selected_part, set_selected_part] = useState();
 	var [is_checkbox_active, set_is_checkbox_active] = useState(false);
-	async function new_record() {}
 	async function fetch_records() {
 		return (
 			await axios({
@@ -22,6 +33,7 @@ export default function App() {
 	}
 	async function get_data() {
 		set_records(await fetch_records());
+		set_selected_part(undefined);
 	}
 	async function change_record_is_read(record_id, new_state) {
 		if (!JSON.parse(window.localStorage.getItem("records")).includes(record_id)) {
@@ -55,14 +67,14 @@ export default function App() {
 				data: {
 					name: document.getElementById("name_input").value,
 					privacy_mode: is_checkbox_active,
-					time: new Date().getTime(),
+					part_number: selected_part.value,
 				},
 			})
 		).data;
-		if (tmp === "limit_reached") {
-			alert(
-				"متاسفانه این دوره از ختم به پایان رسیده است . ان شاء الله در دوره بعدی مشارکت بفرمایید"
-			);
+		if (tmp === "taken") {
+			/* alert(
+				"شماره ای که انتخاب کرده اید توسط کاربر دیگری انتخاب شده است. (در همین زمانی که بعد از لود شدن جدول شما درخواست خود را ارسال کردید)"
+			); */
 		} else {
 			var insertedId = tmp;
 
@@ -71,9 +83,9 @@ export default function App() {
 			window.localStorage.setItem("records", JSON.stringify(current_saved_records));
 		}
 		var tmp = await fetch_records();
-		tmp.sort((i1, i2) => i1.time - i2.time).forEach((record, index) => {
+		tmp.forEach((record, index) => {
 			if (record._id === insertedId) {
-				/* alert(`لطفا جز ${index + 1} را قرائت فرمایید. التماس دعا`); */
+				alert(`لطفا جز ${record.part_number} را قرائت فرمایید. التماس دعا`);
 			}
 		});
 		get_data();
@@ -94,9 +106,18 @@ export default function App() {
 				<img src={image1} style={{ height: "33vh" }} />
 			</div>
 			<div style={{ direction: "rtl" }} className="p-2 relative ">
-				<h1 className="text-2xl">دوره ختم قرآن دسته جمعی به نیت حاج شکر الله یاقوت پور</h1>
+				<h1 className="text-xl">دوره ختم قرآن دسته جمعی</h1>
+				<h1 className="text-2xl">به نیت حاج شکر الله یاقوت پور</h1>
 				<p className="mt-2">لطفا نام و نام خانوادگی خود را وارد کنید :</p>
 				<input id="name_input" className="border px-1 my-2 border-blue-500 rounded " />
+				<p>لطفا از بین جزء های انتخاب نشده زیر موردی را انتخاب کنید </p>
+				<div className="w-1/2 mb-2">
+					<ReactSelect
+						options={calc_empty_parts().map((i) => ({ label: i, value: i }))}
+						onChange={set_selected_part}
+						value={selected_part}
+					/>
+				</div>
 				<div onClick={() => set_is_checkbox_active((prev) => !prev)}>
 					{is_checkbox_active ? <CheckBox /> : <CheckBoxOutlineBlankOutlinedIcon />}
 					نام من را به صورت عمومی نشان نده
@@ -107,15 +128,15 @@ export default function App() {
 				>
 					<span className="front">اعلام جزء شما</span>
 				</button>
-				<h1>جزء های انتخاب شده تاکنون :‌ {records.length} صفحه </h1>
-				<h1>تعداد جزء باقی مانده باقی مانده : {30 - records.length} جزء </h1>
+				<h1>جزء های انتخاب شده تاکنون :‌ {records.length} جزء </h1>
+				<h1>تعداد جزء باقی مانده : {30 - records.length} جزء </h1>
 				<div className="flex justify-between mt-2">
 					<h1 className="text-xl inline-block">جزء های انتخاب شده</h1>
 					<span>(لطفا پس از قرائت ثبت فرمایید)</span>
 				</div>
 
 				{records
-					.sort((i1, i2) => i1.time - i2.time)
+					.sort((i1, i2) => i1.part_number - i2.part_number)
 					.map((record, index, array) => {
 						return (
 							<div
@@ -124,7 +145,7 @@ export default function App() {
 							>
 								<div>
 									<Person2Rounded sx={{ color: "white" }} />
-									{index + 1} -- {`جزء : ${index + 1} `} --
+									{index + 1} -- {`جزء : ${record.part_number} `} --
 									<span className="pr-2">
 										{record.privacy_mode ? "ناشناس " : record.name}
 									</span>

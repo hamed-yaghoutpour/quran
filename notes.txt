@@ -1,0 +1,1 @@
+{name , part_number : number (joz number ) , is_read : bool , ananymous_mode : bool }
