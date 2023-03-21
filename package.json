@@ -3,7 +3,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "(npx tailwindcss -c ./tailwind.config.cjs -i ./tailwind_input.css -o ./tailwind_output.css --watch) & nodemon server.js & vite --port 4117 --strictPort",
-		"start": "(npx tailwindcss -c ./tailwind.config.cjs -i ./tailwind_input.css -o ./tailwind_output.css) & nodemon server.js & (vite build && http-server ./dist -p 4117 )"
+		"start": "(npx tailwindcss -c ./tailwind.config.cjs -i ./tailwind_input.css -o ./tailwind_output.css) && nodemon server.js & (vite build && http-server ./dist -p 4117 )"
 	},
 	"dependencies": {
 		"@date-io/jalaali": "^2.16.1",
