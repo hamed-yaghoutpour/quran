@@ -18,7 +18,13 @@ var db = client.db(env_vars.mongodb_db_name);
 app.get("/records", async (request, response) => {
 	response.json(await db.collection("records").find().toArray());
 });
-
+app.patch("/records/:record_id", async (request, response) => {
+	//it updates fields inside body to match new values
+	await db
+		.collection("records")
+		.updateOne({ _id: ObjectId(request.params.record_id) }, { $set: request.body });
+	response.json();
+});
 app.post("/records", async (request, response) => {
 	//body must be like this : {part_number : number , name : string , privacy_mode : bool}
 
