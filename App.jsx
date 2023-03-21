@@ -214,6 +214,14 @@ export default function App() {
 										</span>
 										<button
 											onClick={() => {
+												if (
+													!JSON.parse(
+														window.localStorage.getItem("records")
+													).includes(record._id)
+												) {
+													alert("این بخش انتخاب شما نبوده است");
+													return;
+												}
 												set_selected_record_to_edit(record._id);
 												set_modal_visibility(true);
 											}}
