@@ -97,8 +97,10 @@ export default function App() {
 				/>
 			</div>
 			<div style={{ direction: "rtl" }} className="p-2 relative ">
-				<h1 className="text-2xl">دوره ختم قرآن دبیرستان فرهنگ فاطمیه - منطقه ۱۱ تهران</h1>
-				<p className="mt-2">لطفا نام و نام خانوادگی خود را وارد کنید :</p>
+				<h1 className="text-xl">
+					دوره ختم قرآن پرسنل شرکت ریل پرداز نو آفرین (قطارهای فدک)
+				</h1>
+				<p className="mt-2 text-3xl">بمناسبت ماه مبارک رمضان</p>
 				<input id="name_input" className="border px-1 my-2 border-blue-500 rounded " />
 				<div onClick={() => set_is_checkbox_active((prev) => !prev)}>
 					{is_checkbox_active ? <CheckBox /> : <CheckBoxOutlineBlankOutlinedIcon />}
